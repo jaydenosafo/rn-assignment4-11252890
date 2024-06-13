@@ -271,29 +271,6 @@ const styles = StyleSheet.create({
     color: '#888'
    }
 
-
-
-
-  // cardContainer: {
-  //   marginTop: 25,
-  //   display: 'flex',
-  //   flex: 1,
-  //   flexDirection: 'column',
-  //   borderRadius: 20,
-  //   padding: 15,
-  //   width: 335,
-  //   height: 196
-  // },
-  // FeaturedContainer: {
-  //   marginTop: 25,
-  //   display: 'flex',
-  //   flex: 1,
-  //   flexDirection: 'column',
-  //   borderRadius: 30,
-  //   padding: 15,
-  //   width: 327,
-  //   height: 74
-  // }
 });
 
 export default HomeScreen;

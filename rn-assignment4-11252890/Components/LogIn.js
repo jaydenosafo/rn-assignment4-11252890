@@ -2,6 +2,9 @@ import { useState } from "react";
 import {View, Text, StyleSheet, TextInput, TouchableOpacity, SafeAreaView, Image} from "react-native";
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import { FontAwesome5 } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 
 const Stack = createStackNavigator();
 
@@ -16,7 +19,7 @@ const LogIn = ({navigation}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Jobizz</Text>
-      <Text style={styles.welcome}>Welcome Back </Text>
+      <Text style={styles.welcome}>Welcome Back 👋 </Text>
       <Text style={styles.subTitle}>Let's log in. Apply to jobs!</Text>
 
       <TextInput
@@ -38,18 +41,29 @@ const LogIn = ({navigation}) => {
       </TouchableOpacity>
 
       <View style={styles.orContinue}>
-        <View style={styles.seperator}/>
-        <Text style={styles.orText}>Or continue with</Text>
+        <View style={styles.orText}>
+         <View style={styles.seperator}/>
+         <Text style={styles.orText}>Or continue with</Text>
+         <View style={styles.seperator}/>
+        </View>
+        
         <View style={styles.socials}>
-        <TouchableOpacity></TouchableOpacity>
-          <TouchableOpacity style={styles.button}>
-            <Image source={require('../assets/Google.png')} style={styles.button}/>
+        <TouchableOpacity style={styles.icon}>
+          <FontAwesome name="apple" size={40} color="black" />
+        </TouchableOpacity>
+          <TouchableOpacity style={styles.icon}>
+          <AntDesign name="google" size={40} color="black" />
           </TouchableOpacity>
-          <TouchableOpacity >
-            <Image source={require('../assets/facebook.png')} style={styles.button}/>
+          <TouchableOpacity style={styles.icon}>
+          <FontAwesome5 name="facebook" size={40} color="#395185" />
           </TouchableOpacity>
         </View>
-        <Text style={styles.registerText}>Haven't an account? <Text style={styles.registerLink}>Register</Text></Text>
+        <View style={styles.registerText}>
+          <Text style={styles.text}>Haven't an account?</Text>
+          <TouchableOpacity>
+          <Text style={styles.link}>Register</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -61,6 +75,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     justifyContent: 'flex-',
     padding: 20,
+    backgroundColor: "#FAFAFD"
   },
   title: {
     fontSize: 32,
@@ -91,14 +106,51 @@ const styles = StyleSheet.create({
     backgroundColor: '#356899',
     padding: 15,
     borderRadius: 6,
-    width: '100%'
+    width: '100%',
+    marginBottom: 40
   },
   buttonText: {
     color: '#fff',
     fontSize: 18,
     textAlign: 'center'
   },
-  
+  orText: {
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  seperator: {
+    flex: 1,
+    height: 1,
+    backgroundColor: '#ccc',
+    marginHorizontal: 10
+  },
+  socials: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: ' center',
+    padding: 20,
+    marginTop: 20,
+  },
+  icon: {
+    backgroundColor: '#fff',
+    borderRadius: 50,
+    padding: 15,
+   
+  },
+  registerText: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    marginTop: 40
+  },
+  text: {
+    color: '#999',
+    fontSize: 14
+  },
+  link: {
+    color: '#1976D2',
+    fontSize: 14
+  }
 
 })
 

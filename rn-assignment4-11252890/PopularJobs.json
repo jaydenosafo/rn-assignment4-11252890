@@ -10,7 +10,7 @@
   },
   {
     "id": "2",
-    "popularLogo": "../assets/Burger.png",
+    "popularLogo": "./assets/Burger.png",
     "popularJobName": "Product Manager",
     "popularCompany": "Beats",
     "popularSalary": "$ 96,000/y",
