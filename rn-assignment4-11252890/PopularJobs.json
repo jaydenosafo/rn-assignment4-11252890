@@ -1,0 +1,68 @@
+[
+  {
+    "id": "1",
+    "popularLogo": "./assets/Burger.png",
+    "popularJobName": "Jr Executive",
+    "popularCompany": "Burger King",
+    "popularSalary": "$ 96,000/y",
+    "popularLocation": "Los Angeles, US",
+    "backgroundColor": "#FFFFFF"
+  },
+  {
+    "id": "2",
+    "popularLogo": "../assets/Burger.png",
+    "popularJobName": "Product Manager",
+    "popularCompany": "Beats",
+    "popularSalary": "$ 96,000/y",
+    "popularLocation": "Los Angeles, US",
+    "backgroundColor": "#FFFFFF"
+  },
+  {
+    "id": "3",
+    "popularJobName": "Product Manager",
+    "popularCompany": "Facebook",
+    "popularSalary": "$ 96,000/y",
+    "popularLocation": "Los Angeles, US",
+    "backgroundColor": "#FFFFFF"
+  },
+  {
+    "id": "4",
+    "popularJobName": "Product Manager",
+    "popularCompany": "Google",
+    "popularSalary": "$ 96,000/y",
+    "popularLocation": "Los Angeles, US",
+    "backgroundColor": "#FFFFFF"
+  },
+  {
+    "id": "5",
+    "popularJobName": "Jr Executive",
+    "popularCompany": "Google",
+    "popularSalary": "$ 96,000/y",
+    "popularLocation": "Los Angeles, US",
+    "backgroundColor": "#FFFFFF"
+  },
+  {
+    "id": "6",
+    "popularJobName": "Jr Executive",
+    "popularCompany": "Facebook",
+    "popularSalary": "$ 96,000/y",
+    "popularLocation": "Los Angeles, US",
+    "backgroundColor": "#FFFFFF"
+  },
+  {
+    "id": "7",
+    "popularJobName": "Product Manager",
+    "popularCompany": "Beats",
+    "popularSalary": "$ 96,000/y",
+    "popularLocation": "Los Angeles, US",
+    "backgroundColor": "#FFFFFF"
+  },
+  {
+    "id": "8",
+    "popularJobName": "Jr Executive",
+    "popularCompany": "Burger King",
+    "popularSalary": "$ 96,000/y",
+    "popularLocation": "Los Angeles, US",
+    "backgroundColor": "#FFFFFF"
+  }
+]
