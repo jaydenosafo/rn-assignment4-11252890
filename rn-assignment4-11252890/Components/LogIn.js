@@ -75,9 +75,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     justifyContent: 'flex-',
     padding: 20,
-    backgroundColor: "#FAFAFD"
+    backgroundColor: "#FAFAFD",
+    
   },
   title: {
+    marginTop: 90,
     fontSize: 32,
     fontWeight: 'bold',
     marginBottom: 20,
