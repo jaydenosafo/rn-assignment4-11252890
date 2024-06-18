@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "logo": "./assets/facebook.png",
+    "logo": "../assets/facebook.png",
     "jobTitle": "Software Engineer",
     "Company": "Facebook",
     "Salary": "$180,000",
@@ -10,6 +10,7 @@
   },
   {
     "id": 2,
+    "logo": "../assets/Google.png",
     "jobTitle": "UI/UX Designer",
     "Company": "Google",
     "Salary": "$80,000",
@@ -26,6 +27,7 @@
   },
   {
     "id": 4,
+    "logo": "../assets/Google.png",
     "jobTitle": "Network Architect",
     "Company": "Microsoft",
     "Salary": "$150,000",

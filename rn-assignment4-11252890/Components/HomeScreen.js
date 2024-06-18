@@ -1,17 +1,47 @@
 import { useState } from "react";
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, SafeAreaView, ScrollView, FlatList } from "react-native";
-import {useRouter, Stack} from 'expo-router';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, SafeAreaView, ScrollView, FlatList, ImageBackground } from "react-native";
 import FeaturedJobs from '../FeaturedJobs.json';
 import PopularJobs from '../PopularJobs.json';
 import { Feather } from '@expo/vector-icons';
+import FeaturedJobCard from "./FeaturedJobCard";
+import PopularJobCard from "./PopularJobCard"
 
 
 const HomeScreen = ({route}) => {
   const {name, email } = route.params;
 
 
-  const info = FeaturedJobs[0];
-  const data = PopularJobs[0];
+  const data = FeaturedJobs[0];
+  const info = PopularJobs[0];
+
+  const getLogoSource = (Company) => {
+    switch (Company) {
+      case 'Facebook':
+        return require('../assets/facebook.png');
+        case 'Google':
+          return require('../assets/Google.png');
+
+      default:
+        return require('../assets/facebook.png')
+    }
+  };
+
+  const getLogo1Source = (popularCompany) => {
+    switch (popularCompany) {
+      case 'Facebook':
+        return require('../assets/facebook.png');
+        case 'Google':
+          return require('../assets/Google.png');
+          case 'Beats':
+            return require('../assets/Beats.png');
+            case 'Burger King':
+              return require('../assets/Burger.png')
+
+      default:
+        return require('../assets/facebook.png')
+    }
+  };
+
 
 return (
   <SafeAreaView style={styles.screen}>
@@ -29,15 +59,21 @@ return (
       </View> 
     </View>
 
-    <View style={styles.searchContainer}>
-      <View style={styles.searchWrapper}>
-      <Feather name="search" size={24} color="black" />
-        <TextInput 
-         style={styles.searchInput}
-         placeholder="Search a job or positon"
-        />
-      </View>
-    </View>
+    <View style={styles.searchSection}>
+          <View style={styles.search}>
+          <Feather name="search" size={24} color="black" />
+            <TextInput placeholder="Search for a job or position"></TextInput>
+          </View>
+
+          <View style={styles.filter}>
+            <TouchableOpacity style={styles.button}>
+              <Image source={require("../assets/filter.5.png")} />
+            </TouchableOpacity>
+          </View>
+     </View>
+
+   
+    
 
     <View style={styles.jobContainer}>
       <View style={styles.jobHeader}>
@@ -48,35 +84,24 @@ return (
       </View>
     </View>
 
-    <View style={styles.featuredJobs}>
-        <FlatList 
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        data={FeaturedJobs}
-        contentContainerStyle={{gap: 10, paddingHorizontal: 12}}
-        renderItem={({item}) => (
-          <TouchableOpacity style={[styles.cardContainer, { backgroundColor: item.backgroundColor }]}>
-            <View style={styles.cardContent}>
-              <View style={styles.featuredLogo}>
-              <Image source={{uri: item.logo}}
-               resizeMode="contain"
-               style={styles.logoImage}
-              />
-              </View>
-              
-              <View style={styles.textContainer}>
-               <Text style={styles.jobTitle}>{item.jobTitle}</Text>
-              <Text style={styles.company}>{item.Company}</Text>
-              </View>
-            </View>
-
-            <View style={styles.cardFooter}>
-              <Text style={styles.salary}>{item.Salary}</Text>
-              <Text style={styles.location}>{item.Location}</Text>
-            </View>
-          </TouchableOpacity>
-          
-        )}
+      
+      <View style={styles.cardContainer}>
+        <FlatList
+         data={FeaturedJobs}
+         renderItem={({item}) => (
+          <FeaturedJobCard
+           jobTitle={item.jobTitle}
+           Company={item.Company}
+           Salary={item.Salary} 
+           backgroundColor={item.backgroundColor}
+           Location={item.Location}
+           logo={getLogoSource(item.Company)}
+          />
+         )}
+         keyExtractor={item => item.id}
+         contentContainerStyle={{gap: 10, paddingHorizontal: 12}}
+         horizontal
+         showsHorizontalScrollIndicator={false}
         />
       </View>
 
@@ -94,19 +119,14 @@ return (
         data={PopularJobs}
         contentContainerStyle={{gap: 10, paddingHorizontal: 12}}
         renderItem={({item}) => (
-          <View style={[styles.FeaturedContainer, { backgroundColor: item.backgroundColor }]}>
-            <View style={styles.logoContainer}>
-              <Image source={{uri: item.popularLogo}} style={styles.logo}/>
-            </View>
-            <View style={styles.jobInfo}>
-             <Text style={styles.popularJobName}>{item.popularJobName}</Text>
-             <Text style={styles.popularCompany}>{item.popularCompany}</Text>
-            </View>
-            <View style={styles.salaryLocation}>
-             <Text style={styles.popularSalary}>{item.popularSalary}</Text>
-             <Text style={styles.popularLocation}>{item.popularLocation}</Text>
-            </View>
-          </View>
+          <PopularJobCard
+           popularLogo={getLogo1Source(item.popularCompany)}
+           popularJobName={item.popularJobName}
+           popularCompany={item.popularCompany}
+           popularSalary={item.popularSalary}
+           popularLocation={item.popularLocation}
+           backgroundColor={item.backgroundColor}
+          />
         )}
         />
       </View>
@@ -125,6 +145,7 @@ const styles = StyleSheet.create({
     alignItems: 'center', 
     justifyContent: 'space-between', 
     padding: 10,
+    marginLeft: 10
   },
   textContainer: {
     flex: 1, 
@@ -149,28 +170,38 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     height: '24'
   },
-   searchContainer: {
-    width: '90%', 
-    backgroundColor: '#f0f0f0',
-    borderRadius: 15,
-    padding: 10,
-    marginLeft: 20,
-    marginTop: 60
-  },
-  searchWrapper: {
-    flexDirection: 'row', 
-    alignItems: 'center', 
-  },
-  searchInput: {
-    flex: 1, 
-    marginLeft: 10, 
-    fontSize: 16,
-    color: 'black',
-  },
+  searchSection:{
+    flexDirection: 'row',
+    paddingTop: 30,
+    marginLeft: 10,
+    flex: 1,
+    width: '100%',
+},
+search:{
+    flexDirection: 'row',
+    backgroundColor: '#F2F2F3',
+    borderRadius: 12,
+    width: '75%',
+    height: 48,
+    alignItems: 'center',
+    marginLeft: 10,
+    paddingLeft: 10
+},
+filter: {
+    width: 48,
+    height: 48,
+    backgroundColor: '#F2F2F3',
+    borderRadius: 12,
+    marginLeft: 10
+},
+button: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+},
   cardContainer: {
-    width: 300, 
-    height:180,
-    padding: 20,
+    flex: 1, 
+    marginTop: 15,
     borderRadius: 20,
   },
   cardContent: {
@@ -218,10 +249,11 @@ const styles = StyleSheet.create({
      flexDirection: 'row',
      justifyContent: 'space-between',
      alignItems: 'center',
-     marginLeft: 20
+     marginLeft: 5
    },
    featuredLogo: {
-    backgroundColor: 'black',
+    width: 40,
+    height: 40,
     marginRight: 10
    },
    featuredJobsTitle: {
@@ -233,43 +265,7 @@ const styles = StyleSheet.create({
      color: '#808080', 
      marginLeft: 20
    },
-   FeaturedContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    padding: 16,
-    borderRadius: 20,
-    marginBottom: 16,
-   },
-   logoContainer: {
-    marginRight: 16
-   },
-   logo: {
-    width: 40,
-    height: 40
-   },
-   jobInfo: {
-    flex: 1
-   },
-   popularJobName: {
-    fontSize: 16,
-    fontWeight: 'bold'
-   },
-   popularCompany: {
-    fontSize: 14,
-    color: '#888'
-   },
-   salaryLocation: {
-    flexDirection: 'column'
-   },
-   popularSalary: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginLeft: 14
-   },
-   popularLocation: {
-    fontSize: 14,
-    color: '#888'
-   }
+   
 
 });
 

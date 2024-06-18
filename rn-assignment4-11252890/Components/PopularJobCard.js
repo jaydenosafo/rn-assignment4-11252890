@@ -1,79 +1,64 @@
-import { View, Text, TouchableOpacity, Image, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, Image, StyleSheet, ImageBackground } from "react-native";
 
-const PopularJobCard = ({ item, selectedJob, handleCardPress }) => {
+
+const PopularJobCard = ({popularCompany, popularJobName, popularLocation, popularSalary, popularLogo,
+  backgroundColor
+}) => {
   return (
-    <TouchableOpacity
-      style={styles.container(selectedJob, item)}
-      onPress={() => handleCardPress(item)}
-    >
-      <TouchableOpacity style={styles.logoContainer(selectedJob, item)}>
-        <Image
-          source={{ uri: item.logo}}
-          resizeMode='contain'
-          style={styles.logoImage}
-        />
-      </TouchableOpacity>
-      <Text style={styles.companyName} numberOfLines={1}>
-        {item.employer_name}
-      </Text>
-
-      <View style={styles.infoContainer}>
-        <Text style={styles.jobName(selectedJob, item)} numberOfLines={1}>
-          {item.jobTitle}
-        </Text>
-        <View style={styles.infoWrapper}>
-          <Text style={styles.publisher(selectedJob, item)}>
-            {item.Company}
-          </Text>
-          <Text style={styles.location}> {item.Location}</Text>
-        </View>
-      </View>
-    </TouchableOpacity>
-  );
-};
+    <View style={[styles.FeaturedContainer, { backgroundColor: backgroundColor }]}>
+            <View style={styles.logoContainer}>
+              <Image source={popularLogo} style={styles.logo}/>
+            </View>
+            <View style={styles.jobInfo}>
+             <Text style={styles.popularJobName}>{popularJobName}</Text>
+             <Text style={styles.popularCompany}>{popularCompany}</Text>
+            </View>
+            <View style={styles.salaryLocation}>
+             <Text style={styles.popularSalary}>{popularSalary}</Text>
+             <Text style={styles.popularLocation}>{popularLocation}</Text>
+            </View>
+          </View>
+  )
+}
 
 const styles = StyleSheet.create({
-  container: (selectedJob, item) => ({
-    width: 250,
-    borderRadius: 10,
-    justifyContent: "space-between",
-  }),
-  logoContainer: (selectedJob, item) => ({
-    width: 50,
-    height: 50,
-    borderRadius: 10,
-    justifyContent: "center",
-    alignItems: "center",
-  }),
-  logoImage: {
-    width: "70%",
-    height: "70%",
-  },
-  companyName: {
-    fontSize: 24,
-    color: "#B3AEC6",
-    marginTop: 26,
-  },
-  infoContainer: {
-    marginTop: 10,
-  },
-  jobName: (selectedJob, item) => ({
-    fontSize: 15,
-  }),
-  infoWrapper: {
-    flexDirection: "row",
-    marginTop: 5,
-    justifyContent: "flex-start",
-    alignItems: "center",
-  },
-  publisher: (selectedJob, item) => ({
-    fontSize: 5,
-  }),
-  location: {
-    fontSize: 10,
-    color: "#B3AEC6",
-  },
-});
+  FeaturedContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 16,
+    borderRadius: 20,
+    marginBottom: 16,
+   },
+   logoContainer: {
+    marginRight: 16
+   },
+   logo: {
+    width: 40,
+    height: 40
+   },
+   jobInfo: {
+    flex: 1
+   },
+   popularJobName: {
+    fontSize: 16,
+    fontWeight: 'bold'
+   },
+   popularCompany: {
+    fontSize: 14,
+    color: '#888'
+   },
+   salaryLocation: {
+    flexDirection: 'column'
+   },
+   popularSalary: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginLeft: 14
+   },
+   popularLocation: {
+    fontSize: 14,
+    color: '#888'
+   }
+})
 
-
-export default PopularJobCard;
+export default PopularJobCard
