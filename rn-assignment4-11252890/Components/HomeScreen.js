@@ -61,7 +61,7 @@ return (
 
     <View style={styles.searchSection}>
           <View style={styles.search}>
-          <Feather name="search" size={24} color="black" />
+          <Feather name="search" size={24} color="black" style={styles.icon} />
             <TextInput placeholder="Search for a job or position"></TextInput>
           </View>
 
@@ -146,6 +146,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between', 
     padding: 10,
     marginLeft: 10
+  },
+  icon: {
+    marginRight: 10
   },
   textContainer: {
     flex: 1, 
@@ -242,7 +245,7 @@ button: {
     color: '#fff',
   },
    jobContainer: {
-     marginTop: 60,
+     marginTop: 45,
      padding: 10
    },
    jobHeader: {

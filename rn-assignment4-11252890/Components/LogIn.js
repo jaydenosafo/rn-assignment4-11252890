@@ -52,7 +52,7 @@ const LogIn = ({navigation}) => {
           <FontAwesome name="apple" size={40} color="black" />
         </TouchableOpacity>
           <TouchableOpacity style={styles.icon}>
-          <AntDesign name="google" size={40} color="black" />
+          <Image source={require('../assets/Google.png')}/>
           </TouchableOpacity>
           <TouchableOpacity style={styles.icon}>
           <FontAwesome5 name="facebook" size={40} color="#395185" />
@@ -118,7 +118,10 @@ const styles = StyleSheet.create({
   },
   orText: {
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginTop: 20,
+    marginBottom: 20,
+    color: 'grey'
   },
   seperator: {
     flex: 1,
@@ -130,14 +133,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: ' center',
-    padding: 20,
     marginTop: 20,
   },
   icon: {
     backgroundColor: '#fff',
     borderRadius: 50,
     padding: 15,
-   
+    backgroundColor: '#fff',
   },
   registerText: {
     alignItems: 'center',
