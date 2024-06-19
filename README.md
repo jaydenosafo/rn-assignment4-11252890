@@ -17,4 +17,4 @@ This project is a react-native application that displays popular and featured jo
 
 # Author
 
-- Name: Jayden John Boamah Osafo
+Jayden John Boamah Osafo - 11252890
